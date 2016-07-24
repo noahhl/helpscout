@@ -79,8 +79,8 @@ module HelpScout
 
     # Creates a new Mailbox object from a Hash of attributes
     def initialize(object)
-      @createdAt = DateTime.iso8601(object["createdAt"]) if object["createdAt"]
-      @modifiedAt = DateTime.iso8601(object["modifiedAt"]) if object["modifiedAt"]
+      @createdAt = object["createdAt"]
+      @modifiedAt = object["modifiedAt"] 
 
       @id = object["id"]
       @name = object["name"]
@@ -169,16 +169,16 @@ module HelpScout
 
     # Creates a new Conversation object from a Hash of attributes
     def initialize(object)
-      @createdAt = DateTime.iso8601(object["createdAt"]) if object["createdAt"]
+      @createdAt = object["createdAt"]
 
       # helpscout is inconsistent in their modifiedAt key. Conversations list action uses 'userModifiedAt'
       if object.has_key?("userModifiedAt")
-        @modifiedAt = DateTime.iso8601(object["userModifiedAt"])
+        @modifiedAt = object["userModifiedAt"]
       elsif object.has_key?("modifiedAt")
-        @modifiedAt = DateTime.iso8601(object["modifiedAt"])
+        @modifiedAt = object["modifiedAt"]
       end
 
-      @closedAt = DateTime.iso8601(object["closedAt"]) if object["closedAt"]
+      @closedAt = object["closedAt"]
 
       @id = object["id"]
       @type = object["type"]
@@ -320,7 +320,7 @@ module HelpScout
 
       # Creates a new Conversation::Thread object from a Hash of attributes
       def initialize(object)
-        @createdAt = DateTime.iso8601(object["createdAt"]) if object["createdAt"]
+      @createdAt = object["createdAt"]
 
         @id = object["id"]
         @assignedTo = Person.new(object["assignedTo"]) if object["assignedTo"]
@@ -473,8 +473,8 @@ module HelpScout
 
     # Creates a new User object from a Hash of attributes
     def initialize(object)
-      @createdAt = DateTime.iso8601(object["createdAt"]) if object["createdAt"]
-      @modifiedAt = DateTime.iso8601(object["modifiedAt"]) if object["modifiedAt"]
+      @createdAt = object["createdAt"]
+      @modifiedAt = object["modifiedAt"]
 
       @id = object["id"]
       @firstName = object["firstName"]
@@ -554,8 +554,8 @@ module HelpScout
 
     # Creates a new Customer object from a Hash of attributes
     def initialize(object)
-      @createdAt = DateTime.iso8601(object["createdAt"]) if object["createdAt"]
-      @modifiedAt = DateTime.iso8601(object["modifiedAt"]) if object["modifiedAt"]
+      @createdAt = object["createdAt"]
+      @modifiedAt = object["modifiedAt"]
 
       @id = object["id"]
       @firstName = object["firstName"]
@@ -639,8 +639,9 @@ module HelpScout
 
       # Creates a new Address object from a Hash of attributes
       def initialize(object)
-        @createdAt = DateTime.iso8601(object["createdAt"]) if object["createdAt"]
-        @modifiedAt = DateTime.iso8601(object["modifiedAt"]) if object["modifiedAt"]
+      @createdAt = object["createdAt"]
+      @modifiedAt = object["modifiedAt"]
+
 
         @id = object["id"]
         @lines = object["lines"]
